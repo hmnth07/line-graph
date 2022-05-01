@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="app">
       <div className='chart'>
-        <h1>chart here</h1>
+        <h1>Chart of users on different social networks</h1>
         <Linechart chartData={userData} />
       </div>
     </div>
