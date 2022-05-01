@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useState } from "react";
+
 import './App.css';
+import Linechart from './components/Linechart';
+import { UserData } from "./Data";
+
 
 function App() {
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.year),
+    datasets: [
+      {
+        label: "facebook users",
+        data: UserData.map((data) => data.facebook),
+        borderColor: "red",
+        borderWidth: 2,
+      },
+      {
+        label: "twitter users",
+        data: UserData.map((data) => data.twitter),
+        borderColor: "blue",
+        borderWidth: 2,
+      },
+      {
+        label: "instagram users",
+        data: UserData.map((data) => data.instagram),
+        borderColor: "green",
+        borderWidth: 2,
+      },
+    ],
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className='chart'>
+        <h1>chart here</h1>
+        <Linechart chartData={userData} />
+      </div>
     </div>
   );
 }
